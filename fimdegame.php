@@ -16,7 +16,9 @@ include("verific_login.php");
     <h1>O jogo foi finalizado!!</h1>
     <p>
         <?php
-        $query_pontos = "SELECT * FROM pontuacao";
+        $query_id_pont = mysqli_query($mysqli, "SELECT MAX(id_pont) as id_pont FROM pontuacao");
+        $row_id_pont = mysqli_fetch_assoc($query_id_pont);
+        $query_pontos = "SELECT * FROM pontuacao WHERE id_pont = ". $row_id_pont['id_pont'];
         $result_pontos = mysqli_query($mysqli, $query_pontos);
         $row_pontos = mysqli_fetch_assoc($result_pontos);
         

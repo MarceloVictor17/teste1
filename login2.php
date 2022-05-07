@@ -20,7 +20,7 @@ $row = mysqli_num_rows($result);
 
 if($row == 1){
     $_SESSION['usuario'] = $usuario;
-    header('Location: gameteste.php');
+    header('Location: game.php');
     exit();
 } else {
     header("Location: login.php?erro=dadoserrado");

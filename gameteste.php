@@ -29,22 +29,16 @@ include("verific_login.php");
           <?php
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+
             if(empty($dados['valresposta'])){ //IF das pontuação não funciona
 
-            $j = 1;
-
-            $query_validarpontuacao = "SELECT * FROM pontuacao WHERE id_pont = ". $j;
-            $result_validarpontuacao = mysqli_query($mysqli, $query_validarpontuacao);
-            while(mysqli_num_rows($result_validarpontuacao) == 1){
-              $j++;
-              $query_validarpontuacao = "SELECT * FROM pontuacao WHERE id_pont = ". $j;
-              $result_validarpontuacao = mysqli_query($mysqli, $query_validarpontuacao);
-            }
-
-            $query_validarpontuacao2 = "INSERT into pontuacao (Pontuacao, nome_usu, id_pont) VALUE (0, '$_SESSION[usuario]', '$j')";
-            mysqli_query($mysqli, $query_validarpontuacao2);
-
+            $query_validarpontuacao = "INSERT into pontuacao (Pontuacao, nome_usu) VALUE (0, '$_SESSION[usuario]')";
+            mysqli_query($mysqli, $query_validarpontuacao);
           }
+
+            $query_validarpontuacao2 = "SELECT MAX(id_pont) as id_pont FROM pontuacao";
+            $result_validar_pontuacao2 = mysqli_query($mysqli, $query_validarpontuacao2);
+            $row_validar_pontuacao2 = mysqli_fetch_assoc($result_validar_pontuacao2);
 
             var_dump($dados);
 
@@ -62,13 +56,13 @@ include("verific_login.php");
               $row_val_pergunta = mysqli_fetch_assoc($result_val_pergunta);
                 if($row_val_pergunta['Alternativa_certa'] == $verific_resposta){
                   echo "Resposta certa <br><br>";
-                  $query_pontos = ("SELECT * FROM pontuacao");
+                  $query_pontos = ("SELECT Pontuacao, id_pont FROM pontuacao WHERE id_pont = '$row_validar_pontuacao2[id_pont]'");
                   $result_pontos = mysqli_query($mysqli, $query_pontos);
                   $row_pontos = mysqli_fetch_assoc($result_pontos);
 
                   $row_pontos['Pontuacao'] = $row_pontos['Pontuacao'] + 10;
 
-                  $pontos_att = "UPDATE pontuacao set Pontuacao = '$row_pontos[Pontuacao]' WHERE id_pont = '$j'";
+                  $pontos_att = "UPDATE pontuacao set Pontuacao = '$row_pontos[Pontuacao]' WHERE id_pont = '$row_validar_pontuacao2[id_pont]'";
                   $query_pontos_att = mysqli_query($mysqli, $pontos_att);
                     if($query_pontos_att){
                       echo "sucesso pontos";
