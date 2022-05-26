@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'SigmarOne';
+  src: url('../Fonte/SigmarOne-Regular.ttf') format('opentype');
+}
+
+.font-sigmar{
+  font-family: 'SigmarOne';
+}
+
+.bg-fundosite{
+  background-color: #1c0b2b;
+}
+
+.bg-azulclaro{
+  background-color: #6f95ff !important;
+}
+
+.borda-azul{
+  border: 5px solid #5c65c0;
+  border-radius: 10px;  
+}
+
+.btn:hover{
+  border-color: #413b6b;
+  color: white;
+}
+
+.link-cadastro{
+  color: white !important;
+}
+
+
+

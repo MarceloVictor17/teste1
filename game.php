@@ -13,7 +13,7 @@ include("verific_login.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="CSS/stylegeral.css">
 </head>
   
 <body class="bg-fundosite p-5 vh-100 font-sigmar ">
@@ -77,7 +77,7 @@ include("verific_login.php");
           </div>
           <div class="btn-group my-5 d-flex align-content-center justify-content-center gap-1" data-toggle="buttons">
               <label class="btn btn-primary bg-azulclaro borda-azul btn btn-outline-light btn-lg">
-                <input type="radio" name="resp" value="Alternativa1" onClick="ativaOpcao()" id="option1" autocomplete="off">
+                <input type="radio" name="resp" value="Alternativa1" onClick="ativaOpcao()" id="option1" autocomplete="off" checked>
                   <?php
                     $query_resposta1 = ("SELECT Alternativa1 FROM perguntas WHERE idPerguntas = ". $row_pergunta['idPerguntas']);
                     $resultado_resposta1 = mysqli_query($mysqli, $query_resposta1);

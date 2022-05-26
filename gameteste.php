@@ -11,12 +11,16 @@ include("verific_login.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="CSS/stylegeral.css">
 
   <style>
     .active{
       background-color: yellow !important;
     }
+
+    label, input[type="radio"]:checked{
+  background-color: #ff4040 !important;
+}
   </style>
 </head>
 <body class="bg-fundosite p-5 vh-100 font-sigmar ">
@@ -95,8 +99,8 @@ include("verific_login.php");
         </p>
       </div>
         <div class="btn-group my-5 d-flex align-content-center justify-content-center gap-1" data-toggle="buttons">
-          <label class="btn btn-primary bg-azulclaro borda-azul btn btn-outline-light btn-lg">
-            <input type="radio" name="resp" value="Alternativa1" onClick="ativaOpcao()" id="option1" autocomplete="off" checked>
+          <label class="btn btn-primary bg-azulclaro borda-azul btn-outline-light btn-lg">
+            <input type="radio" name="resp" value="Alternativa1" onclick="ativaOpcao()" id="option1" autocomplete="off" checked>
               <?php
                 $query_resposta1 = ("SELECT Alternativa1 FROM perguntas WHERE idPerguntas = ". $row_pergunta['idPerguntas']);
                 $resultado_resposta1 = mysqli_query($mysqli, $query_resposta1);
@@ -154,8 +158,22 @@ if($i >= 5){
 
 <script>
   function ativaOpcao(){
-    var n1 = document.querySelector('#option1') //is checked no javascript
-    n1.className("active")
-  }
+    var n1 = document.querySelector("resp");
+    if(n1.checked == true){
+    n1.className("active");
+    console.log("deu certo");
+  }}
+
+  const btn = document.querySelector('#btn');        
+        const radioButtons = document.querySelectorAll('input[name="resp"]');
+        btn.addEventListener("click"), () => {
+            let selectedSize;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedSize = radioButton.value;
+                    break;
+                }
+            }}
+
 </script>
 </html>
