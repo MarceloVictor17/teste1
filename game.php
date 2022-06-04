@@ -50,6 +50,9 @@ include("verific_login.php");
                   
                     if($row_val_pergunta['Alternativa_certa'] == $verific_resposta){
                       echo "Resposta certa <br><br>";
+                      ?>
+                      <script src="JS/sons.js"></script>
+                      <?php
                       $query_pontos = ("SELECT Pontuacao, id_pont FROM pontuacao WHERE id_pont = '$row_validar_pontuacao2[id_pont]'");
                       $result_pontos = mysqli_query($mysqli, $query_pontos);
                       $row_pontos = mysqli_fetch_assoc($result_pontos);
