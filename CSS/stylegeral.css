@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'SigmarOne';
-  src: url('../Fonte/SigmarOne-Regular.ttf') format('opentype');
+  src: url('..\Fonte\SigmarOne-Regular.ttf') format('truetype');
 }
 
 .font-sigmar{
-
+  font-family: 'SigmarOne';
 }
 
 .bg-fundosite{
@@ -27,6 +27,15 @@
 
 .link-cadastro{
   color: white !important;
+}
+
+#corpo_game{
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+
+#corpo_game.fade{
+  opacity: 0;
 }
 
 

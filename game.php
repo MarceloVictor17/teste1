@@ -13,11 +13,17 @@ include("verific_login.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="CSS/stylegeral.css">
+  <link rel="stylesheet" href="CSS/stylegeral.css" type="text/css">
 </head>
+
   
 <body class="bg-fundosite p-5 vh-100 font-sigmar ">
-  <div class="container mt-5">
+
+  <audio preload src="Music\aplausos.mp3" id="somAplauso"></audio>
+  <audio preload src="Music\positive.mp3" id="somAcerto"></audio>
+  <audio preload src="Music\negative.mp3" id="somErro"></audio>
+  
+  <div id="corpo_game" class="container mt-5">
     <form action="game.php" method="POST">
       <h1 class="text-light text-center my-4">Puzzle Brain</h1>
         <div class="text-light card border-0 bg-transparent">
@@ -51,7 +57,7 @@ include("verific_login.php");
                     if($row_val_pergunta['Alternativa_certa'] == $verific_resposta){
                       echo "Resposta certa <br><br>";
                       ?>
-                      <script src="JS/sons.js"></script>
+                      <script src="JS/somCerto.js"></script>
                       <?php
                       $query_pontos = ("SELECT Pontuacao, id_pont FROM pontuacao WHERE id_pont = '$row_validar_pontuacao2[id_pont]'");
                       $result_pontos = mysqli_query($mysqli, $query_pontos);
@@ -67,6 +73,9 @@ include("verific_login.php");
                           echo "erro pontos<br>";
                         }
                     }else{
+                      ?>
+                      <script src="JS\somErrado.js"></script>
+                      <?php
                       echo "Resposta errada <br><br>";
                     }}
                 
@@ -117,7 +126,9 @@ include("verific_login.php");
               </label>      
             </div> 
             <div class="my-5 d-flex align-content-center justify-content-end gap-1">
-              <button type="submit" value="<?php echo $i; ?>" name="valresposta" class="btn btn-outline-light btn-lg">Responder</button>
+              <button type="submit" value="<?php echo $i; ?>" name="valresposta" class="btn btn-outline-light btn-lg" id="botaoSubmit">Responder</button>
+
+              
 
             
               <button class="btn btn-outline-light btn-lg"><a href="start.html">Menu</a></button>
@@ -128,6 +139,8 @@ include("verific_login.php");
       </form>
     </div>
   </div>
+
+  <script src="JS\fade.js"></script>
 
 
     <?php 

@@ -1,1 +1,0 @@
-﻿console.log("printar qualquer coisa")
