@@ -29,7 +29,7 @@
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
           aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span
             class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="navbar-brand" href="Algum link aqui">PuzzleGame 1.5 Demo</a>
+        <a class="navbar-brand" href="Algum link aqui">PuzzleBrain 1.5 Demo</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -45,8 +45,10 @@
   <div class="jumbotron text-center">
     <div class="container">
 
-      <h1>Puzzle Game</h1>
-      <p style="color:#875">Puzzle Game, é um Quiz feito por estudantes do ensino médio do Instituto Federal de Pernambuco(IF-PE), com o intuito de ensinar pessoas com dificuldades em matérias como História, Matématica e Português! Dê Start no game e venha aprender conosco!</p>
+      <h1>Puzzle Brain</h1>
+      <p style="color:#875">Puzzle Brain, é um Quiz feito por estudantes do ensino médio do Instituto Federal de Pernambuco(IF-PE), com o intuito de ensinar pessoas com dificuldades em matérias como História, Matématica e Português! Dê Start no game e venha aprender conosco!</p>
+      <audio controls src="..\Midia\Music\Zula_MiniVandals.mp3" id="trilhaSonora"></audio>
+      <button id="trilhaBotao">Mute</button>
       <p style="color:#567">Se puder ajudar no desenvolvimento do jogo, em breve abriremos a opção de doação no Patreon!
         <a href="https://www.patreon.com/pt-BR/">https://www.patreon.com/pt-BR</a></p>
 
@@ -59,16 +61,16 @@
 
       <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-6"> 
-         <a href="game.php" class="btn btn-sm animated-button thar-one">Iniciar Game</a> 
+         <a href="..\PHP\game.php" class="btn btn-sm animated-button thar-one">Iniciar Game</a> 
       </div>
       
       <div class="col-md-3 col-sm-3 col-xs-6"> 
-         <a href="login.php" class="btn btn-sm animated-button 
+         <a href="..\PHP\login.php" class="btn btn-sm animated-button 
          thar-two">Fazer Login</a>
       </div>
       
       <div class="col-md-3 col-sm-3 col-xs-6"> 
-         <a href="cadastro.php" class="btn btn-sm animated-button 
+         <a href="..\PHP\cadastro.php" class="btn btn-sm animated-button 
          thar-three">Criar conta</a>
       </div>
       
@@ -95,6 +97,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="..\JS\trilhasonora.js"></script>
 </body>
 
 </html>
