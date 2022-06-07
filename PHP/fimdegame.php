@@ -13,6 +13,8 @@ include("verific_login.php");
     <title>Document</title>
 </head>
 <body>
+
+    <audio preload src="..\Midia\Music\aplausos.mp3" id="somAplauso"></audio>
     <h1>O jogo foi finalizado!!</h1>
     <p>
         <?php
@@ -32,5 +34,7 @@ include("verific_login.php");
         
         ?>
     </p>
+
+    <script src="..\JS\aplausos.js"></script>
 </body>
 </html>

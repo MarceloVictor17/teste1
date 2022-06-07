@@ -19,7 +19,6 @@ include("verific_login.php");
   
 <body class="bg-fundosite p-5 vh-100 font-sigmar ">
 
-  <audio preload src="..\Midia\Music\aplausos.mp3" id="somAplauso"></audio>
   <audio preload src="..\Midia\Music\positive.mp3" id="somAcerto"></audio>
   <audio preload src="..\Midia\Music\negative.mp3" id="somErro"></audio>
   
@@ -144,9 +143,10 @@ include("verific_login.php");
 
 
     <?php 
-    if($i >= 5){
-      header("location:fimdegame.php");
-    }
+      if($i >= 5){
+        header("location:fimdegame.php");
+        echo ("<audio preload src='..\Midia\Music\aplausos.mp3' id='somAplauso'></audio>");
+      }
     ?>
 
 </body>
