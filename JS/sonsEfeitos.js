@@ -1,16 +1,32 @@
-﻿var $button = document.querySelector("#botaoEfeito")
+﻿console.log("deu certo sonsEfeitos")
 
-var $effectSons = document.querySelectorAll("sons")
+var buttonEffect = document.getElementById("volumeteste")
+
+var effectSons = document.querySelectorAll("sonsEfeitos")
+
+var musicOn = document.querySelector("volumeSom")
+var musicOffn = document.querySelector("volumeMuted")
 
 var effectAtivado = true
 
-button.addEventListener("click", function(){
+buttonEffect.addEventListener("click", function(){
 
-	if(musicAtivado == true){
-	$effectSons.volume = 0
-	musicAtivado = false
-	}else{
-		$effectSons.volume = 1
-		effectAtivado = true
-	}	
+	console.log("funcionou")
+
+	if(effectAtivado == true){
+		effectSons.volume = 0
+		effectAtivado = false
+		document.querySelector("#volumeSom")
+    	.classList.toggle("fade")
+		document.querySelector("#volumeMuted")
+    	.classList.toggle("fade")
+
+		}else{
+			effectSons.volume = 1
+			effectAtivado = true
+			document.querySelector("#volumeSom")
+			.classList.toggle("fade")
+			document.querySelector("#volumeMuted")
+			.classList.toggle("fade")
+		}
 })

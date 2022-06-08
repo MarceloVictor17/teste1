@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'SigmarOne';
-  src: url('..\Midia\Fonte\SigmarOne-Regular.ttf') format('truetype');
+  src: url('..\Midia\Fonte\SigmarOne-Regular.ttf') format('opentype');
 }
 
 .font-sigmar{
@@ -37,6 +37,16 @@
 #corpo_game.fade{
   opacity: 0;
 }
+
+#volumeteste{
+  opacity: 1;
+}
+
+#volumeteste.fade{
+  opacity: 0;
+}
+
+
 
 
 

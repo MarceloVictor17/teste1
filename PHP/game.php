@@ -19,8 +19,8 @@ include("verific_login.php");
   
 <body class="bg-fundosite p-5 vh-100 font-sigmar ">
 
-  <audio preload src="..\Midia\Music\positive.mp3" id="somAcerto"></audio>
-  <audio preload src="..\Midia\Music\negative.mp3" id="somErro"></audio>
+  <audio preload src="..\Midia\Music\positive.mp3" class="sonsEfeitos" id="somAcerto"></audio>
+  <audio preload src="..\Midia\Music\negative.mp3" class="sonsEfeitos" id="somErro"></audio>
   
   <div id="corpo_game" class="container mt-5">
     <form action="game.php" method="POST">
@@ -28,6 +28,14 @@ include("verific_login.php");
         <div class="text-light card border-0 bg-transparent">
           <div class="card-body borda-azul bg-azulclaro p-5">
             <p class="lead">
+
+
+            <div id="volumeteste">
+
+                <img style="position: absolute;" id="volumeSom" width="50px" height="50px" src="..\Midia\Img\volume.svg" alt="">
+                <img class="fade" id="volumeMuted" width="50px" height="50px" src="..\Midia\Img\volumeMuted.svg" alt="">
+
+                </div>
               <?php
 
                 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -139,7 +147,8 @@ include("verific_login.php");
     </div>
   </div>
 
-  <script src="JS\fade.js"></script>
+  <script src="..\JS\fade.js"></script>
+  <script src="..\JS\sonsEfeitos.js"></script>
 
 
     <?php 
