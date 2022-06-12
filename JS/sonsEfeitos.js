@@ -1,11 +1,13 @@
-﻿console.log("deu certo sonsEfeitos")
+﻿console.log("sonsEfeitos funcionando")
+
+console.log(effectAtivado)
 
 var buttonEffect = document.getElementById("volumeteste")
 
 var effectSons = document.querySelectorAll("sonsEfeitos")
 
-var musicOn = document.querySelector("volumeSom")
-var musicOffn = document.querySelector("volumeMuted")
+somErro = document.querySelector("#somErro")
+somAcerto = document.querySelector("#somAcerto")
 
 var effectAtivado = true
 
@@ -14,19 +16,20 @@ buttonEffect.addEventListener("click", function(){
 	console.log("funcionou")
 
 	if(effectAtivado == true){
-		effectSons.volume = 0
-		effectAtivado = false
+		somAcerto.volume = 0
+		somErro.volume = 0
 		document.querySelector("#volumeSom")
     	.classList.toggle("fade")
 		document.querySelector("#volumeMuted")
     	.classList.toggle("fade")
-
+		effectAtivado = false
 		}else{
-			effectSons.volume = 1
-			effectAtivado = true
+			somAcerto.volume = 1
+			somErro.volume = 1
 			document.querySelector("#volumeSom")
 			.classList.toggle("fade")
 			document.querySelector("#volumeMuted")
 			.classList.toggle("fade")
+			effectAtivado = true
 		}
 })

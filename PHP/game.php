@@ -13,7 +13,7 @@ include("verific_login.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="..\CSS/stylegeral.css" type="text/css">
+  <link rel="stylesheet" href="..\CSS\stylegeral.css">
 </head>
 
   
@@ -42,7 +42,7 @@ include("verific_login.php");
                 $i= 1;
 
                 if(empty($dados['valresposta'])){
-                  echo "Questão:" . $i. "/5<br>";
+                  echo "Questão: " . $i. "/5<br>";
                   $query_validarpontuacao = "INSERT into pontuacao (Pontuacao, nome_usu) VALUE (0, '$_SESSION[usuario]')";
                   mysqli_query($mysqli, $query_validarpontuacao);
                 }

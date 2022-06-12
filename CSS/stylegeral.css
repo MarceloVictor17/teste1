@@ -1,52 +1,61 @@
-@font-face {
-  font-family: 'SigmarOne';
-  src: url('..\Midia\Fonte\SigmarOne-Regular.ttf') format('opentype');
-}
+﻿@font-face {
+    font-family: 'SigmarOne';
+    src: url('SigmarOne-Regular.ttf') format('opentype');
+  }
+  
+  .font-sigmar{
+    font-family: 'SigmarOne';
+  }
+  
+  .bg-fundosite{
+    background-color: #1c0b2b;
+  }
+  
+  .bg-azulclaro{
+    background-color: #6f95ff !important;
+  }
+  
+  .borda-azul{
+    border: 5px solid #5c65c0;
+    border-radius: 10px;  
+  }
+  
+  .btn:hover{
+    border-color: #413b6b;
+    color: white;
+  }
+  
+  .link-cadastro{
+    color: white !important;
+  }
+  
+  #corpo_game{
+    opacity: 1;
+    transition: opacity .5s ease;
+  }
+  
+  #corpo_game.fade{
+    opacity: 0;
+  }
+  
+  #volumeteste{
+    opacity: 1;
+  }
+  
+  #volumeteste.fade{
+    opacity: 0;
+  }
 
-.font-sigmar{
-  font-family: 'SigmarOne';
-}
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:hover{
+    color: inherit;
+    text-decoration: none;
+  }
 
-.bg-fundosite{
-  background-color: #1c0b2b;
-}
-
-.bg-azulclaro{
-  background-color: #6f95ff !important;
-}
-
-.borda-azul{
-  border: 5px solid #5c65c0;
-  border-radius: 10px;  
-}
-
-.btn:hover{
-  border-color: #413b6b;
-  color: white;
-}
-
-.link-cadastro{
-  color: white !important;
-}
-
-#corpo_game{
-  opacity: 1;
-  transition: opacity .5s ease;
-}
-
-#corpo_game.fade{
-  opacity: 0;
-}
-
-#volumeteste{
-  opacity: 1;
-}
-
-#volumeteste.fade{
-  opacity: 0;
-}
-
-
-
-
-
+  .errou{
+    animation: normal 2s infinite;
+  }
