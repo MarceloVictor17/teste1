@@ -2,6 +2,7 @@
 
 include("conexao.php");
 include("verific_login.php");
+ob_start();
 
 ?>
 
@@ -23,26 +24,18 @@ include("verific_login.php");
   <audio preload src="..\Midia\Music\negative.mp3" class="sonsEfeitos" id="somErro"></audio>
   
   <div id="corpo_game" class="container mt-5">
-    <form action="game.php" method="POST">
+    <form action="gameteste.php" method="POST">
       <h1 class="text-light text-center my-4">Puzzle Brain</h1>
-        <div class="text-light card border-0 bg-transparent">
-          <div class="card-body borda-azul bg-azulclaro p-5">
-            <p class="lead">
-
-
-            <div id="volumeteste">
-
-                <img style="position: absolute;" id="volumeSom" width="50px" height="50px" src="..\Midia\Img\volume.svg" alt="">
-                <img class="fade" id="volumeMuted" width="50px" height="50px" src="..\Midia\Img\volumeMuted.svg" alt="">
-
-                </div>
+        <div id="animacaoCE" class="text-light card border-0 bg-transparent">
+          <div class="card-body borda-azul bg-azulclaro p-5 row">
+            <p class="lead col">
               <?php
 
                 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
                 $i= 1;
 
                 if(empty($dados['valresposta'])){
-                  echo "Questão: " . $i. "/5<br>";
+                  echo "Questão: " . $i. "/5<br><br>";
                   $query_validarpontuacao = "INSERT into pontuacao (Pontuacao, nome_usu) VALUE (0, '$_SESSION[usuario]')";
                   mysqli_query($mysqli, $query_validarpontuacao);
                 }
@@ -54,7 +47,7 @@ include("verific_login.php");
                   $verific_pergunta = $_POST['id_pergunta'];
                   $verific_resposta = $_POST['resp'];
                   $i = (int)$_POST['valresposta'] + 1;
-                  echo "Questão:" . $i. "/5<br>";
+                  echo "Questão: " . $i. "/5<br><br>";
                   $pontos = 0;
                   
                   $query_val_pergunta = "SELECT idPerguntas, Alternativa_certa FROM perguntas WHERE idPerguntas = ". $verific_pergunta;
@@ -64,6 +57,7 @@ include("verific_login.php");
                     if($row_val_pergunta['Alternativa_certa'] == $verific_resposta){
                       echo "Resposta certa <br><br>";
                       ?>
+                      
                       <script src="..\JS/somCerto.js"></script>
                       <?php
                       $query_pontos = ("SELECT Pontuacao, id_pont FROM pontuacao WHERE id_pont = '$row_validar_pontuacao2[id_pont]'");
@@ -74,11 +68,6 @@ include("verific_login.php");
     
                       $pontos_att = "UPDATE pontuacao set Pontuacao = '$row_pontos[Pontuacao]' WHERE id_pont = '$row_validar_pontuacao2[id_pont]'";
                       $query_pontos_att = mysqli_query($mysqli, $pontos_att);
-                        if($query_pontos_att){
-                          echo "sucesso pontos<br>";
-                        }else{
-                          echo "erro pontos<br>";
-                        }
                     }else{
                       ?>
                       <script src="..\JS\somErrado.js"></script>
@@ -93,6 +82,19 @@ include("verific_login.php");
                 echo "<input type='hidden' name='id_pergunta' value='$row_pergunta[idPerguntas]'>";    
               ?>
             </p>
+
+            <div class="row gx-2">
+                <p class="lead col ms-2">
+                      <strong>
+                      <?php
+                          $query_pontos2 = ("SELECT Pontuacao, id_pont FROM pontuacao WHERE id_pont = '$row_validar_pontuacao2[id_pont]'");
+                          $result_pontos2 = mysqli_query($mysqli, $query_pontos2);
+                          $row_pontos2 = mysqli_fetch_assoc($result_pontos2);
+                          echo ("Pontuação: ". $row_pontos2['Pontuacao']);
+                      ?>
+                      </strong>
+                </p>
+            </div>
           </div>
           <div class="btn-group my-5 d-flex align-content-center justify-content-center gap-1" data-toggle="buttons">
               <label class="btn btn-primary bg-azulclaro borda-azul btn btn-outline-light btn-lg">
@@ -133,13 +135,10 @@ include("verific_login.php");
               </label>      
             </div> 
             <div class="my-5 d-flex align-content-center justify-content-end gap-1">
-              <button type="submit" value="<?php echo $i; ?>" name="valresposta" class="btn btn-outline-light btn-lg" id="botaoSubmit">Responder</button>
+              <button type="submit" value="<?php echo $i; ?>" name="valresposta" class="bg-azulclaro borda-azul btn btn-outline-light btn-lg" id="botaoSubmit">Responder</button>
 
-              
-
-            
-              <button class="btn btn-outline-light btn-lg"><a href="..\HTML\start.html">Menu</a></button>
-              <button class="btn btn-outline-light btn-lg"><a href="logout.php">Sair</a></button>
+              <button type="button" onclick="return confirm('Quer voltar para o menu?')" id="menuButton" class="btn btn-outline-light btn-lg bg-azulclaro borda-azul"><a href="..\HTML\start.html">Menu</a></button>
+              <button type="button" onclick="return confirm('Quer deslogar de sua conta?')" id="sairButton" class="btn btn-outline-light btn-lg bg-azulclaro borda-azul"><a href="..\PHP\logout.php">Sair</a></button>
             </div>
             <div class="my-5 d-flex align-content-center justify-content-end gap-1">
             </div>
@@ -149,12 +148,13 @@ include("verific_login.php");
 
   <script src="..\JS\fade.js"></script>
   <script src="..\JS\sonsEfeitos.js"></script>
-
-
+  <script src="..\JS\teste.js"></script>
+    
+    
     <?php 
-      if($i >= 5){
+      if($i >= 6){
         header("location:fimdegame.php");
-        echo ("<audio preload src='..\Midia\Music\aplausos.mp3' id='somAplauso'></audio>");
+        echo("<audio preload src='..\Midia\Music\aplausos.mp3' id='somAplauso'></audio>");
       }
     ?>
 
