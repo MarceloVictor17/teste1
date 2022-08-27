@@ -12,19 +12,20 @@ ob_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Puzzle Brain</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="..\CSS\stylegeral.css">
+  <link rel="icon" type="image/png" href="..\Midia\Img\puzzle-removebg-preview.png"/>
 </head>
 
   
-<body class="bg-fundosite p-5 vh-100 font-sigmar ">
+<body class="bg-fundosite p-2 vh-100 font-sigmar ">
 
   <audio preload src="..\Midia\Music\positive.mp3" class="sonsEfeitos" id="somAcerto"></audio>
   <audio preload src="..\Midia\Music\negative.mp3" class="sonsEfeitos" id="somErro"></audio>
   
-  <div id="corpo_game" class="container mt-5">
-    <form action="gameteste.php" method="POST">
+  <div id="corpo_game" class="container mt-2">
+    <form action="game.php" method="POST">
       <h1 class="text-light text-center my-4">Puzzle Brain</h1>
         <div id="animacaoCE" class="text-light card border-0 bg-transparent">
           <div class="card-body borda-azul bg-azulclaro p-5 row">
@@ -55,7 +56,6 @@ ob_start();
                   $row_val_pergunta = mysqli_fetch_assoc($result_val_pergunta);
                   
                     if($row_val_pergunta['Alternativa_certa'] == $verific_resposta){
-                      echo "Resposta certa <br><br>";
                       ?>
                       
                       <script src="..\JS/somCerto.js"></script>
@@ -72,7 +72,6 @@ ob_start();
                       ?>
                       <script src="..\JS\somErrado.js"></script>
                       <?php
-                      echo "Resposta errada <br><br>";
                     }}
                 
                 $query_pergunta = ("SELECT idPerguntas, Perguntas FROM perguntas ORDER BY RAND() LIMIT 1");
@@ -134,13 +133,11 @@ ob_start();
                   ?>
               </label>      
             </div> 
-            <div class="my-5 d-flex align-content-center justify-content-end gap-1">
+            <div class="my-2 d-flex align-content-center justify-content-end gap-1">
               <button type="submit" value="<?php echo $i; ?>" name="valresposta" class="bg-azulclaro borda-azul btn btn-outline-light btn-lg" id="botaoSubmit">Responder</button>
 
-              <button type="button" onclick="return confirm('Quer voltar para o menu?')" id="menuButton" class="btn btn-outline-light btn-lg bg-azulclaro borda-azul"><a href="..\HTML\start.html">Menu</a></button>
+              <button type="button" onclick="return confirm('Quer voltar para o menu? Seu jogo atual será perdido!')" id="menuButton" class="btn btn-outline-light btn-lg bg-azulclaro borda-azul"><a href="..\HTML\start.html">Menu</a></button>
               <button type="button" onclick="return confirm('Quer deslogar de sua conta?')" id="sairButton" class="btn btn-outline-light btn-lg bg-azulclaro borda-azul"><a href="..\PHP\logout.php">Sair</a></button>
-            </div>
-            <div class="my-5 d-flex align-content-center justify-content-end gap-1">
             </div>
       </form>
     </div>
